@@ -30,9 +30,6 @@ use pocketmine\level\Level;
 use pocketmine\entity\object\ItemEntity;
 use pocketmine\event\player\PlayerInteractEvent;
 use pocketmine\event\inventory\CraftItemEvent;
-use pocketmine\inventory\ShapedRecipe;
-use pocketmine\inventory\CraftingRecipe;
-use pocketmine\inventory\transaction\CraftingTransaction;
 
 class dropTask extends Task {
 	private $level;
@@ -500,6 +497,7 @@ class Main extends PluginBase implements Listener {
 
 
 	public function onCraftEvent(CraftItemEvent $event) {
+		$player = $event->getPlayer();
 		foreach($event->getRecipe()->getResults() as $result) {
 			if($result->getId() === Item::IRON_NUGGET) {
 				$player->sendMessage(TextFormat::GOLD . "[" . TextFormat::GREEN . "Wallet" . TextFormat::GOLD . "] " . TextFormat::WHITE . "Bạn không thể chế tạo vật phẩm này!");
