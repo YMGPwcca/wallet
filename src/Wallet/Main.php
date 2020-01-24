@@ -18,8 +18,8 @@ use pocketmine\event\Listener;
 use pocketmine\command\CommandSender;
 use pocketmine\command\Command;
 use pocketmine\utils\TextFormat;
-use muqsit\invmenu\InvMenu;
-use muqsit\invmenu\InvMenuHandler;
+use Wallet\libs\muqsit\invmenu\InvMenu;
+use Wallet\libs\muqsit\invmenu\InvMenuHandler;
 use pocketmine\item\{Item, ItemFactory};
 use pocketmine\inventory\transaction\action\SlotChangeAction;
 use onebone\economyapi\EconomyAPI;
@@ -28,6 +28,7 @@ use pocketmine\event\inventory\InventoryPickupItemEvent;
 use pocketmine\scheduler\Task;
 use pocketmine\level\Level;
 use pocketmine\entity\object\ItemEntity;
+use pocketmine\event\player\PlayerInteractEvent;
 
 class dropTask extends Task {
 	private $level;
@@ -487,6 +488,18 @@ class Main extends PluginBase implements Listener {
 			}
 		}
 		return true;
+	}
+
+	public function onTap(PlayerInteractEvent $event) {
+		$player = $event->getPlayer();
+		$itemID = $player->getInventory()->getItemInHand()->getId();
+		$itemName = $player->getInventory()->getItemInHand()->getName();
+		if ($itemID === Item::IRON_NUGGET && $itemName == "Thẻ ngân hàng") {
+			$nganhang = new NganHang($player, $this);
+			
+			/** @var Player $player */
+			$nganhang->sendTo($player);
+		}
 	}
 
 	public function PickUp(InventoryPickupItemEvent $e) {
