@@ -6,6 +6,6 @@ Wallet is a plugin that add support for VNĐ (Vietnam Dong) and only use in Lite
 
 Right click Iron Nugget item to open Wallet menu.
 
-## LICENSE
+## License
 
 This plugin was made by SpermLord. Do not use this without his permission.
