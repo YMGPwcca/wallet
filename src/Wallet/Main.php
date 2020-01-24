@@ -272,122 +272,19 @@ class NganHang {
 				}
 			}
 
-			$moneyy = [Item::PRISMARINE_CRYSTALS, Item::FEATHER, Item::NAUTILUS_SHELL, Item::HEART_OF_THE_SEA, Item::GHAST_TEAR, Item::GUNPOWDER, Item::LEATHER, Item::MAGMA_CREAM, Item::NETHER_WART];
-			$hand = $player->getInventory()->getItemInHand();
-			if (!in_array($hand->getId(), $moneyy)) {
-				$player->sendMessage($this->tag . "Bạn phải cầm tiền trên tay!");
+			if ($data[0] > 500000) {
+				$player->sendMessage($this->tag . "Bạn không thể nạp số tiền > 500.000.000VNĐ! Hãy ra ngân hàng để thực hiện giao dịch hoặc nạp nhiều lần.");
 				return;
 			}
-			else {
-				if ($hand->getId() === Item::NETHER_WART) {
-					if ($hand->getCount() < $data[0]) {
-						$final = 500 * $hand->getCount();
-						$itemCount = $hand->getCount();
-						$player->sendMessage($this->tag . "Bạn không có đủ " . $data[0] . " tờ trên tay! Số tiền nạp vào sẽ là: " . $final . ".000VNĐ");
-					}
-					else {
-						$final = 500 * $data[0];
-						$itemCount = $data[0];
-					}
-					$player->getInventory()->removeItem(Item::get($hand->getId(), 0, $itemCount));
-				}
-				else if ($hand->getId() === Item::MAGMA_CREAM) {
-					if ($hand->getCount() < $data[0]) {
-						$final = 200 * $hand->getCount();
-						$itemCount = $hand->getCount();
-						$player->sendMessage($this->tag . "Bạn không có đủ " . $data[0] . " tờ trên tay! Số tiền nạp vào sẽ là: " . $final . ".000VNĐ");
-					}
-					else {
-						$final = 200 * $data[0];
-						$itemCount = $data[0];
-					}
-					$player->getInventory()->removeItem(Item::get($hand->getId(), 0, $itemCount));
-				}
-				else if ($hand->getId() === Item::LEATHER) {
-					if ($hand->getCount() < $data[0]) {
-						$final = 100 * $hand->getCount();
-						$itemCount = $hand->getCount();
-						$player->sendMessage($this->tag . "Bạn không có đủ " . $data[0] . " tờ trên tay! Số tiền nạp vào sẽ là: " . $final . ".000VNĐ");
-					}
-					else {
-						$final = 100 * $data[0];
-						$itemCount = $data[0];
-					}
-					$player->getInventory()->removeItem(Item::get($hand->getId(), 0, $itemCount));
-				}
-				else if ($hand->getId() === Item::GUNPOWDER) {
-					if ($hand->getCount() < $data[0]) {
-						$final = 50 * $hand->getCount();
-						$itemCount = $hand->getCount();
-						$player->sendMessage($this->tag . "Bạn không có đủ " . $data[0] . " tờ trên tay! Số tiền nạp vào sẽ là: " . $final . ".000VNĐ");
-					}
-					else {
-						$final = 50 * $data[0];
-						$itemCount = $data[0];
-					}
-					$player->getInventory()->removeItem(Item::get($hand->getId(), 0, $itemCount));
-				}
-				else if ($hand->getId() === Item::GHAST_TEAR) {
-					if ($hand->getCount() < $data[0]) {
-						$final = 20 * $hand->getCount();
-						$itemCount = $hand->getCount();
-						$player->sendMessage($this->tag . "Bạn không có đủ " . $data[0] . " tờ trên tay! Số tiền nạp vào sẽ là: " . $final . ".000VNĐ");
-					}
-					else {
-						$final = 20 * $data[0];
-						$itemCount = $data[0];
-					}
-					$player->getInventory()->removeItem(Item::get($hand->getId(), 0, $itemCount));
-				}
-				else if ($hand->getId() === Item::HEART_OF_THE_SEA) {
-					if ($hand->getCount() < $data[0]) {
-						$final = 10 * $hand->getCount();
-						$itemCount = $hand->getCount();
-						$player->sendMessage($this->tag . "Bạn không có đủ " . $data[0] . " tờ trên tay! Số tiền nạp vào sẽ là: " . $final . ".000VNĐ");
-					}
-					else {
-						$final = 10 * $data[0];
-						$itemCount = $data[0];
-					}
-					$player->getInventory()->removeItem(Item::get($hand->getId(), 0, $itemCount));
-				}
-				else if ($hand->getId() === Item::NAUTILUS_SHELL) {
-					if ($hand->getCount() < $data[0]) {
-						$final = 5 * $hand->getCount();
-						$itemCount = $hand->getCount();
-						$player->sendMessage($this->tag . "Bạn không có đủ " . $data[0] . " tờ trên tay! Số tiền nạp vào sẽ là: " . $final . ".000VNĐ");
-					}
-					else {
-						$final = 5 * $data[0];
-						$itemCount = $data[0];
-					}
-					$player->getInventory()->removeItem(Item::get($hand->getId(), 0, $itemCount));
-				}
-				else if ($hand->getId() === Item::FEATHER) {
-					if ($hand->getCount() < $data[0]) {
-						$final = 2 * $hand->getCount();
-						$itemCount = $hand->getCount();
-						$player->sendMessage($this->tag . "Bạn không có đủ " . $data[0] . " tờ trên tay! Số tiền nạp vào sẽ là: " . $final . ".000VNĐ");
-					}
-					else {
-						$final = 2 * $data[0];
-						$itemCount = $data[0];
-					}
-					$player->getInventory()->removeItem(Item::get($hand->getId(), 0, $itemCount));
-				}
-				else if ($hand->getId() === Item::PRISMARINE_CRYSTALS) {
-					if ($hand->getCount() < $data[0]) {
-						$final = 1 * $hand->getCount();
-						$itemCount = $hand->getCount();
-						$player->sendMessage($this->tag . "Bạn không có đủ " . $data[0] . " tờ trên tay! Số tiền nạp vào sẽ là: " . $final . ".000VNĐ");
-					}
-					else {
-						$final = 1 * $data[0];
-						$itemCount = $data[0];
-					}
-					$player->getInventory()->removeItem(Item::get($hand->getId(), 0, $itemCount));
+
+			$countThis = 0;
+			foreach($player->getInventory()->getContents() as $item) {
+				if ($item->getId() == Item::NETHER_WART) {
+					$countThis += $item->getCount();
 				}
 			}
+			$player->sendMessage($this->tag . $countThis);
+			return; //Prevent after code to run
 
 			if (strlen($final) > 3) {
 				$final = substr_replace($final, ".", strlen($final)-3, 0);
@@ -395,10 +292,9 @@ class NganHang {
 
 			$money->addMoney($player, $final);
 			$player->sendMessage($this->tag . "Bạn đã nạp " . $final . ".000VNĐ");
-			
 		});
 		$form->setTitle("Nạp tiền");
-		$form->addInput("Nhập số tờ trên tay cần nạp (VD: 2 để nạp 2 tờ)");
+		$form->addInput("Nhập số tiền cần nạp (VD: 121 để nạp 121.000VNĐ)");
 		$form->sendToPlayer($player);
 	}
 
