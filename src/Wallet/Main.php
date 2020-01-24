@@ -29,6 +29,10 @@ use pocketmine\scheduler\Task;
 use pocketmine\level\Level;
 use pocketmine\entity\object\ItemEntity;
 use pocketmine\event\player\PlayerInteractEvent;
+use pocketmine\event\inventory\CraftItemEvent;
+use pocketmine\inventory\ShapedRecipe;
+use pocketmine\inventory\CraftingRecipe;
+use pocketmine\inventory\transaction\CraftingTransaction;
 
 class dropTask extends Task {
 	private $level;
@@ -472,21 +476,8 @@ class Main extends PluginBase implements Listener {
                \  /\  / (_| | | |  __/ |_ 
                 \/  \/ \__,_|_|_|\___|\__|
                   SpermLord/DevNTNghia
-");
+		");
 	}
-
-	/* public function onCommand(CommandSender $player, Command $command, string $label, Array $args = null): bool {
-		if ($command->getName() === "wallet") {
-			if ($player instanceof Player) {
-				$nganhang = new NganHang($player, $this);
-				$nganhang->sendTo($player);
-			}
-			else {
-				$player->sendMessage(TextFormat::GOLD . "[" . TextFormat::GREEN . "Wallet" . TextFormat::GOLD . "] " . TextFormat::RED . "Use this command ingame!");
-			}
-		}
-		return true;
-	}*/
 
 	public function onTap(PlayerInteractEvent $event) {
 		$player = $event->getPlayer();
@@ -508,9 +499,13 @@ class Main extends PluginBase implements Listener {
 	}
 
 
-	public function OnCraftEvent(CraftItemEvent $event){
-		if($event->getRecipe()->getResult()->getId() === Item::IRON_NUGGET){
-			$event->setCancelled();
+	public function onCraftEvent(CraftItemEvent $event) {
+		foreach($event->getRecipe()->getResults() as $result) {
+			if($result->getId() === Item::IRON_NUGGET) {
+				$player->sendMessage(TextFormat::GOLD . "[" . TextFormat::GREEN . "Wallet" . TextFormat::GOLD . "] " . TextFormat::WHITE . "Bạn không thể chế tạo vật phẩm này!");
+				$event->setCancelled();
+				break;
+			}
 		}
 	}
 }
