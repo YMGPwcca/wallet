@@ -485,12 +485,10 @@ class Main extends PluginBase implements Listener {
 		");
 	}
 
-	public function onCommand(CommandSender $player, Command $command, string $label, Array $args = null): bool {
+	/*public function onCommand(CommandSender $player, Command $command, string $label, Array $args = null): bool {
 		if ($command->getName() === "wallet") {
 			if ($player instanceof Player) {
 				$nganhang = new NganHang($player, $this);
-
-				/** @var Player $player */
 				$nganhang->sendTo($player);
 			}
 			else {
@@ -498,9 +496,9 @@ class Main extends PluginBase implements Listener {
 			}
 		}
 		return true;
-	}
+	}*/
 
-	/*public function onTap(PlayerInteractEvent $event) {
+	public function onTap(PlayerInteractEvent $event) {
 		$player = $event->getPlayer();
 		$itemID = $player->getInventory()->getItemInHand()->getId();
 		$itemName = $player->getInventory()->getItemInHand()->getName();
@@ -508,7 +506,7 @@ class Main extends PluginBase implements Listener {
 			$nganhang = new NganHang($player, $this);
 			$nganhang->sendTo($player);
 		}
-	}*/
+	}
 
 	public function PickUp(InventoryPickupItemEvent $e) {
 		$itemEntity = $e->getItem();
