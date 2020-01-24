@@ -242,6 +242,7 @@ class NganHang {
 					$player->getInventory()->addItem($item);
 					$amount -= 1;
 				}
+
 				if (strlen($data[0]) > 3) {
 					$final = substr_replace($data[0], ".", strlen($data[0])-3, 0);
 				}
@@ -277,20 +278,78 @@ class NganHang {
 				return;
 			}
 
+			$items = [Item::PRISMARINE_CRYSTALS, Item::FEATHER, Item::NAUTILUS_SHELL, Item::HEART_OF_THE_SEA, Item::GHAST_TEAR, Item::GUNPOWDER, Item::LEATHER, Item::MAGMA_CREAM, Item::NETHER_WART];
 			$countThis = 0;
 			foreach($player->getInventory()->getContents() as $item) {
-				if ($item->getId() == Item::NETHER_WART) {
+				if (in_array($item->getId(), $items)) {
 					$countThis += $item->getCount();
 				}
+				while ($data[0] >= 500) {
+					$item = ItemFactory::get(Item::NETHER_WART, 0, 1);
+					$money->addMoney($player, 500);
+					$player->getInventory()->removeItem($item);
+					$amount -= 500;
+				}
+				while ($data[0] >= 200) {
+					$item = ItemFactory::get(Item::MAGMA_CREAM, 0, 1);
+					$money->addMoney($player, 200);
+					$player->getInventory()->removeItem($item);
+					$amount -= 200;
+				}
+				while ($data[0] >= 100) {
+					$item = ItemFactory::get(Item::LEATHER, 0, 1);
+					$money->addMoney($player, 100);
+					$player->getInventory()->removeItem($item);
+					$amount -= 100;
+				}
+				while ($data[0] >= 50) {
+					$item = ItemFactory::get(Item::GUNPOWDER, 0, 1);
+					$money->addMoney($player, 50);
+					$player->getInventory()->addItem($item);
+					$amount -= 50;
+				}
+				while ($data[0] >= 20) {
+					$item = ItemFactory::get(Item::GHAST_TEAR, 0, 1);
+					$money->addMoney($player, 20);
+					$player->getInventory()->removeItem($item);
+					$amount -= 20;
+				}
+				while ($data[0] >= 10) {
+					$item = ItemFactory::get(Item::HEART_OF_THE_SEA, 0, 1);
+					$money->addMoney($player, 10);
+					$player->getInventory()->removeItem($item);
+					$amount -= 10;
+				}
+				while ($data[0] >= 5) {
+					$item = ItemFactory::get(Item::NAUTILUS_SHELL, 0, 1);
+					$money->addMoney($player, 5);
+					$player->getInventory()->removeItem($item);
+					$amount -= 5;
+				}
+				while ($data[0] >= 2) {
+					$item = ItemFactory::get(Item::FEATHER, 0, 1);
+					$money->addMoney($player, 2);
+					$player->getInventory()->removeItem($item);
+					$amount -= 2;
+				}
+				while ($data[0] >= 1) {
+					$item = ItemFactory::get(Item::PRISMARINE_CRYSTALS, 0, 1);
+					$money->addMoney($player, 1);
+					$player->getInventory()->removeItem($item);
+					$amount -= 1;
+				}
 			}
-			$player->sendMessage($this->tag . $countThis);
-			return; //Prevent after code to run
+			$moneyAfter = $money->myMoney($player);
 
+			if (!$moneyAfter > $default) {
+				$player->sendMessage($this->tag . TextFormat::RED . "Nạp tiền không thành công! Hãy thử lại sau.");
+				return;
+			}
+
+			$final = $moneyAfter - $default;
 			if (strlen($final) > 3) {
 				$final = substr_replace($final, ".", strlen($final)-3, 0);
 			}
-
-			$money->addMoney($player, $final);
 			$player->sendMessage($this->tag . "Bạn đã nạp " . $final . ".000VNĐ");
 		});
 		$form->setTitle("Nạp tiền");
@@ -398,7 +457,7 @@ class Main extends PluginBase implements Listener {
 		$player = $event->getPlayer();
 		$itemID = $player->getInventory()->getItemInHand()->getId();
 		$itemName = $player->getInventory()->getItemInHand()->getName();
-		if ($itemID === Item::IRON_NUGGET && $itemName == "Thẻ ngân hàng") {
+		if ($itemID === Item::IRON_NUGGET/* && $itemName == "Thẻ ngân hàng"*/) {
 			$nganhang = new NganHang($player, $this);
 			$nganhang->sendTo($player);
 		}
