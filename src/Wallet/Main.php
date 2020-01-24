@@ -389,6 +389,13 @@ class NganHang {
 				}
 			}
 
+			if (strlen($final) > 3) {
+				$final = substr_replace($final, ".", strlen($final)-3, 0);
+				if (strlen($final) > 6) {
+					$final->substr_replace($final, ".", strlen($final)-6, 0);
+				}
+			}
+
 			$money->addMoney($player, $final);
 			$player->sendMessage($this->tag . "Bạn đã nạp " . $final . ".000VNĐ");
 			
@@ -421,13 +428,14 @@ class NganHang {
 				$player->sendMessage($this->tag . "Bạn phải nhập số tiền cần chuyển!");
 				return;
 			}
-			else {
-				if (!is_numeric($data[1])) {
+			if (!is_numeric($data[1])) {
 					$player->sendMessage($this->tag . "Số tiền cần chuyển phải là số!");
 					return;
-				}
 			}
-			
+			if ($data[1] > 500000) {
+				$player->sendMessage($this->tag . "Bạn không thể chuyển số tiền > 500.000.000VNĐ! Hãy ra ngân hàng để thực hiện giao dịch hoặc chuyển nhiều lần.");
+				return;
+			}
 			if ($data[1] > $money->myMoney($player)) {
 				$player->sendMessage($this->tag . "Số tiền cần chuyển lớn hơn số dư trong tài khoản!");
 				return;
@@ -435,6 +443,10 @@ class NganHang {
 
 			$money->addMoney($target, $data[1]);
 			$money->reduceMoney($player, $data[1]);
+
+			if (strlen($data[1]) > 3) {
+				$final = substr_replace($data[1], ".", strlen($data[1])-3, 0);
+			}
 
 			if ($default < $money->myMoney($target) && $default2 > $money->myMoney($player)) {
 				$player->sendMessage($this->tag . "Bạn đã gửi " . $data[1] . ".000VNĐ cho " . TextFormat::RED . $target->getName());
@@ -476,7 +488,22 @@ class Main extends PluginBase implements Listener {
 		");
 	}
 
-	public function onTap(PlayerInteractEvent $event) {
+	public function onCommand(CommandSender $player, Command $command, string $label, Array $args = null): bool {
+		if ($command->getName() === "wallet") {
+			if ($player instanceof Player) {
+				$nganhang = new NganHang($player, $this);
+
+				/** @var Player $player */
+				$nganhang->sendTo($player);
+			}
+			else {
+				$player->sendMessage(TextFormat::GOLD . "[" . TextFormat::GREEN . "Wallet" . TextFormat::GOLD . "] " . TextFormat::RED . "Use this command ingame!");
+			}
+		}
+		return true;
+	}
+
+	/*public function onTap(PlayerInteractEvent $event) {
 		$player = $event->getPlayer();
 		$itemID = $player->getInventory()->getItemInHand()->getId();
 		$itemName = $player->getInventory()->getItemInHand()->getName();
@@ -484,7 +511,7 @@ class Main extends PluginBase implements Listener {
 			$nganhang = new NganHang($player, $this);
 			$nganhang->sendTo($player);
 		}
-	}
+	}*/
 
 	public function PickUp(InventoryPickupItemEvent $e) {
 		$itemEntity = $e->getItem();
