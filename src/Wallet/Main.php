@@ -475,12 +475,10 @@ class Main extends PluginBase implements Listener {
 ");
 	}
 
-	public function onCommand(CommandSender $player, Command $command, string $label, Array $args = null): bool {
+	/* public function onCommand(CommandSender $player, Command $command, string $label, Array $args = null): bool {
 		if ($command->getName() === "wallet") {
 			if ($player instanceof Player) {
 				$nganhang = new NganHang($player, $this);
-
-				/** @var Player $player */
 				$nganhang->sendTo($player);
 			}
 			else {
@@ -488,7 +486,7 @@ class Main extends PluginBase implements Listener {
 			}
 		}
 		return true;
-	}
+	}*/
 
 	public function onTap(PlayerInteractEvent $event) {
 		$player = $event->getPlayer();
@@ -496,8 +494,6 @@ class Main extends PluginBase implements Listener {
 		$itemName = $player->getInventory()->getItemInHand()->getName();
 		if ($itemID === Item::IRON_NUGGET && $itemName == "Thẻ ngân hàng") {
 			$nganhang = new NganHang($player, $this);
-			
-			/** @var Player $player */
 			$nganhang->sendTo($player);
 		}
 	}
