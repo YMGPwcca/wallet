@@ -134,8 +134,8 @@ class NganHang {
 			$money->reduceMoney($player, $amount);
 
 			if ($default > $money->myMoney($player)) {
-				if ($amount > 500000) {
-					$player->sendMessage($this->tag . "Bạn không thể rút > 500.000.000VNĐ. Hãy ra ngân hàng để rút số tiền lớn hơn.");
+				if ($amount > 300000) {
+					$player->sendMessage($this->tag . "Bạn không thể rút > 	300.000.000VNĐ. Hãy ra ngân hàng để rút số tiền lớn hơn.");
 					return;
 				}
 				if (!$player->getInventory()->canAddItem(Item::get(Item::DIRT))) {
@@ -283,7 +283,7 @@ class NganHang {
 					if ($hand->getCount() < $data[0]) {
 						$final = 500 * $hand->getCount();
 						$itemCount = $hand->getCount();
-						$player->sendMessage($this->tag . "Bạn không có đủ " . $data[0] . " tờ trên người! Số tiền nạp vào sẽ là: " . $final . ".000VNĐ");
+						$player->sendMessage($this->tag . "Bạn không có đủ " . $data[0] . " tờ trên tay! Số tiền nạp vào sẽ là: " . $final . ".000VNĐ");
 					}
 					else {
 						$final = 500 * $data[0];
@@ -295,7 +295,7 @@ class NganHang {
 					if ($hand->getCount() < $data[0]) {
 						$final = 200 * $hand->getCount();
 						$itemCount = $hand->getCount();
-						$player->sendMessage($this->tag . "Bạn không có đủ " . $data[0] . " tờ trên người! Số tiền nạp vào sẽ là: " . $final . ".000VNĐ");
+						$player->sendMessage($this->tag . "Bạn không có đủ " . $data[0] . " tờ trên tay! Số tiền nạp vào sẽ là: " . $final . ".000VNĐ");
 					}
 					else {
 						$final = 200 * $data[0];
@@ -307,7 +307,7 @@ class NganHang {
 					if ($hand->getCount() < $data[0]) {
 						$final = 100 * $hand->getCount();
 						$itemCount = $hand->getCount();
-						$player->sendMessage($this->tag . "Bạn không có đủ " . $data[0] . " tờ trên người! Số tiền nạp vào sẽ là: " . $final . ".000VNĐ");
+						$player->sendMessage($this->tag . "Bạn không có đủ " . $data[0] . " tờ trên tay! Số tiền nạp vào sẽ là: " . $final . ".000VNĐ");
 					}
 					else {
 						$final = 100 * $data[0];
@@ -319,7 +319,7 @@ class NganHang {
 					if ($hand->getCount() < $data[0]) {
 						$final = 50 * $hand->getCount();
 						$itemCount = $hand->getCount();
-						$player->sendMessage($this->tag . "Bạn không có đủ " . $data[0] . " tờ trên người! Số tiền nạp vào sẽ là: " . $final . ".000VNĐ");
+						$player->sendMessage($this->tag . "Bạn không có đủ " . $data[0] . " tờ trên tay! Số tiền nạp vào sẽ là: " . $final . ".000VNĐ");
 					}
 					else {
 						$final = 50 * $data[0];
@@ -331,7 +331,7 @@ class NganHang {
 					if ($hand->getCount() < $data[0]) {
 						$final = 20 * $hand->getCount();
 						$itemCount = $hand->getCount();
-						$player->sendMessage($this->tag . "Bạn không có đủ " . $data[0] . " tờ trên người! Số tiền nạp vào sẽ là: " . $final . ".000VNĐ");
+						$player->sendMessage($this->tag . "Bạn không có đủ " . $data[0] . " tờ trên tay! Số tiền nạp vào sẽ là: " . $final . ".000VNĐ");
 					}
 					else {
 						$final = 20 * $data[0];
@@ -343,7 +343,7 @@ class NganHang {
 					if ($hand->getCount() < $data[0]) {
 						$final = 10 * $hand->getCount();
 						$itemCount = $hand->getCount();
-						$player->sendMessage($this->tag . "Bạn không có đủ " . $data[0] . " tờ trên người! Số tiền nạp vào sẽ là: " . $final . ".000VNĐ");
+						$player->sendMessage($this->tag . "Bạn không có đủ " . $data[0] . " tờ trên tay! Số tiền nạp vào sẽ là: " . $final . ".000VNĐ");
 					}
 					else {
 						$final = 10 * $data[0];
@@ -355,7 +355,7 @@ class NganHang {
 					if ($hand->getCount() < $data[0]) {
 						$final = 5 * $hand->getCount();
 						$itemCount = $hand->getCount();
-						$player->sendMessage($this->tag . "Bạn không có đủ " . $data[0] . " tờ trên người! Số tiền nạp vào sẽ là: " . $final . ".000VNĐ");
+						$player->sendMessage($this->tag . "Bạn không có đủ " . $data[0] . " tờ trên tay! Số tiền nạp vào sẽ là: " . $final . ".000VNĐ");
 					}
 					else {
 						$final = 5 * $data[0];
@@ -367,7 +367,7 @@ class NganHang {
 					if ($hand->getCount() < $data[0]) {
 						$final = 2 * $hand->getCount();
 						$itemCount = $hand->getCount();
-						$player->sendMessage($this->tag . "Bạn không có đủ " . $data[0] . " tờ trên người! Số tiền nạp vào sẽ là: " . $final . ".000VNĐ");
+						$player->sendMessage($this->tag . "Bạn không có đủ " . $data[0] . " tờ trên tay! Số tiền nạp vào sẽ là: " . $final . ".000VNĐ");
 					}
 					else {
 						$final = 2 * $data[0];
@@ -379,7 +379,7 @@ class NganHang {
 					if ($hand->getCount() < $data[0]) {
 						$final = 1 * $hand->getCount();
 						$itemCount = $hand->getCount();
-						$player->sendMessage($this->tag . "Bạn không có đủ " . $data[0] . " tờ trên người! Số tiền nạp vào sẽ là: " . $final . ".000VNĐ");
+						$player->sendMessage($this->tag . "Bạn không có đủ " . $data[0] . " tờ trên tay! Số tiền nạp vào sẽ là: " . $final . ".000VNĐ");
 					}
 					else {
 						$final = 1 * $data[0];
@@ -391,9 +391,6 @@ class NganHang {
 
 			if (strlen($final) > 3) {
 				$final = substr_replace($final, ".", strlen($final)-3, 0);
-				if (strlen($final) > 6) {
-					$final->substr_replace($final, ".", strlen($final)-6, 0);
-				}
 			}
 
 			$money->addMoney($player, $final);
