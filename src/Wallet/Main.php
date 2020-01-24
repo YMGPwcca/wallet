@@ -39,7 +39,7 @@ class dropTask extends Task {
 	private $target;
 	private $plugin;
 
-	private $time = 10;
+	private $time = 5;
 
 	function __construct(Main $main, Level $level, Player $target) {
 		$this->plugin = $main;
