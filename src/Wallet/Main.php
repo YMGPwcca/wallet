@@ -506,4 +506,11 @@ class Main extends PluginBase implements Listener {
 			$itemEntity->kill();
 		}
 	}
+
+
+	public function OnCraftEvent(CraftItemEvent $event){
+		if($event->getRecipe()->getResult()->getId() === Item::IRON_NUGGET){
+			$event->setCancelled();
+		}
+	}
 }
