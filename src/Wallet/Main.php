@@ -54,7 +54,7 @@ class dropTask extends Task {
 		$z = $this->target->getZ();
 		$pos = new Vector3($x, $y + 2, $z);
 		$moneyItems = [Item::EMERALD, Item::GOLD_NUGGET, Item::DIAMOND, Item::GOLD_INGOT];
-		$this->level->dropItem($pos, Item::get($moneyItems[mt_rand(0, count($moneyItems) - 1)])->setCustomName("SPERMLORD"));
+		$this->level->dropItem($pos, Item::get($moneyItems[mt_rand(0, count($moneyItems) - 1)])->setCustomName("SpermLord"));
 	}
 }
 
@@ -76,7 +76,7 @@ class NganHang {
 			->readonly()
 			->setName("Ví tiền của bạn")
 			->setListener([$this, "nganhangF"]);
-		$this->nganhangM->getInventory()->setItem(13, Item::get(Item::EMERALD)->setCustomName("Hiện có: " . $money->myMoney($player) . ".000VNĐ"));
+		$this->nganhangM->getInventory()->setItem(13, Item::get(Item::EMERALD)->setCustomName("Hiện có: " .TextFormat::GOLD . $money->myMoney($player) . ".000VNĐ"));
 		$this->nganhangM->getInventory()->setItem(37, Item::get(Item::GOLD_NUGGET)->setCustomName("Chuyển tiền"));
 		$this->nganhangM->getInventory()->setItem(39, Item::get(Item::DIAMOND)->setCustomName("Nạp tiền"));
 		$this->nganhangM->getInventory()->setItem(41, Item::get(Item::GOLD_INGOT)->setCustomName("Rút tiền"));
@@ -91,7 +91,7 @@ class NganHang {
 		}
 		else if ($iA->getId() == Item::SIGN) {
 			$player->removeWindow($action->getInventory());
-			$player->sendMessage($this->tag . "Đang ném bạn tới Ngân hàng");
+			$player->sendMessage($this->tag . "Đang đưa bạn tới Ngân hàng...");
 			return false;
 		}
 		else if ($iA->getId() == Item::DIAMOND) {
@@ -135,11 +135,11 @@ class NganHang {
 
 			if ($default > $money->myMoney($player)) {
 				if ($amount > 300000) {
-					$player->sendMessage($this->tag . "Bạn không thể rút > 300.000.000VNĐ. Hãy ra ngân hàng để rút số tiền lớn hơn.");
+					$player->sendMessage($this->tag . "Bạn không thể rút > 300.000.000VNĐ! Hãy ra ngân hàng để rút số tiền lớn hơn.");
 					return;
 				}
 				if (!$player->getInventory()->canAddItem(Item::get(Item::DIRT))) {
-					$player->sendMessage($this->tag . "Hãy để ít nhất 5 khoảng trống ở inventory");
+					$player->sendMessage($this->tag . "Không thể rút tiền vì bạn không còn chỗ trống trong kho đồ.");
 					$money->addMoney($player, $amount);
 					return;
 				}
@@ -147,7 +147,7 @@ class NganHang {
 					$item = ItemFactory::get(Item::NETHER_WART, 0, 1);
 					$item->setCustomName("500.000VNĐ");
 					if (!$player->getInventory()->canAddItem($item)) {
-						$player->sendMessage($this->tag . "Không thể rút thêm 500.000VNĐ vì không còn chỗ chứa trong kho đồ, số tiền còn lại đã được đưa lại vào ví");
+						$player->sendMessage($this->tag . "Không thể rút thêm " . TextFormat::GOLD . "500.000VNĐ" . TextFormat::WHITE . " vì không còn chỗ chứa trong kho đồ, số tiền còn lại đã được đưa lại vào ví.");
 						$money->addMoney($player, $amount);
 						return;
 					}
@@ -158,7 +158,7 @@ class NganHang {
 					$item = ItemFactory::get(Item::MAGMA_CREAM, 0, 1);
 					$item->setCustomName("200.000VNĐ");
 					if (!$player->getInventory()->canAddItem($item)) {
-						$player->sendMessage($this->tag . "Không thể rút thêm 200.000VNĐ vì không còn chỗ chứa trong kho đồ, số tiền còn lại đã được đưa lại vào ví");
+						$player->sendMessage($this->tag . "Không thể rút thêm " . TextFormat::GOLD . "200.000VNĐ" . TextFormat::WHITE . " vì không còn chỗ chứa trong kho đồ, số tiền còn lại đã được đưa lại vào ví.");
 						$money->addMoney($player, $amount);
 						return;
 					}
@@ -169,7 +169,7 @@ class NganHang {
 					$item = ItemFactory::get(Item::LEATHER, 0, 1);
 					$item->setCustomName("100.000VNĐ");
 					if (!$player->getInventory()->canAddItem($item)) {
-						$player->sendMessage($this->tag . "Không thể rút thêm 100.000VNĐ vì không còn chỗ chứa trong kho đồ, số tiền còn lại đã được đưa lại vào ví");
+						$player->sendMessage($this->tag . "Không thể rút thêm " . TextFormat::GOLD . "100.000VNĐ" . TextFormat::WHITE . " vì không còn chỗ chứa trong kho đồ, số tiền còn lại đã được đưa lại vào ví.");
 						$money->addMoney($player, $amount);
 						return;
 					}
@@ -180,7 +180,7 @@ class NganHang {
 					$item = ItemFactory::get(Item::GUNPOWDER, 0, 1);
 					$item->setCustomName("50.000VNĐ");
 						if (!$player->getInventory()->canAddItem($item)) {
-						$player->sendMessage($this->tag . "Không thể rút thêm 50.000VNĐ vì không còn chỗ chứa trong kho đồ, số tiền còn lại đã được đưa lại vào ví");
+						$player->sendMessage($this->tag . "Không thể rút thêm " . TextFormat::GOLD . "50.000VNĐ" . TextFormat::WHITE . " vì không còn chỗ chứa trong kho đồ, số tiền còn lại đã được đưa lại vào ví.");
 						$money->addMoney($player, $amount);
 						return;
 					}
@@ -191,7 +191,7 @@ class NganHang {
 					$item = ItemFactory::get(Item::GHAST_TEAR, 0, 1);
 					$item->setCustomName("20.000VNĐ");
 					if (!$player->getInventory()->canAddItem($item)) {
-						$player->sendMessage($this->tag . "Không thể rút thêm 20.000VNĐ vì không còn chỗ chứa trong kho đồ, số tiền còn lại đã được đưa lại vào ví");
+						$player->sendMessage($this->tag . "Không thể rút thêm " . TextFormat::GOLD . "20.000VNĐ" . TextFormat::WHITE . " vì không còn chỗ chứa trong kho đồ, số tiền còn lại đã được đưa lại vào ví.");
 						$money->addMoney($player, $amount);
 						return;
 					}
@@ -202,7 +202,7 @@ class NganHang {
 					$item = ItemFactory::get(Item::HEART_OF_THE_SEA, 0, 1);
 					$item->setCustomName("10.000VNĐ");
 					if (!$player->getInventory()->canAddItem($item)) {
-						$player->sendMessage($this->tag . "Không thể rút thêm 10.000VNĐ vì không còn chỗ chứa trong kho đồ, số tiền còn lại đã được đưa lại vào ví");
+						$player->sendMessage($this->tag . "Không thể rút thêm " . TextFormat::GOLD . "10.000VNĐ" . TextFormat::WHITE . " vì không còn chỗ chứa trong kho đồ, số tiền còn lại đã được đưa lại vào ví.");
 						$money->addMoney($player, $amount);
 						return;
 					}
@@ -213,7 +213,7 @@ class NganHang {
 					$item = ItemFactory::get(Item::NAUTILUS_SHELL, 0, 1);
 					$item->setCustomName("5.000VNĐ");
 					if (!$player->getInventory()->canAddItem($item)) {
-						$player->sendMessage($this->tag . "Không thể rút thêm 5.000VNĐ vì không còn chỗ chứa trong kho đồ, số tiền còn lại đã được đưa lại vào ví");
+						$player->sendMessage($this->tag . "Không thể rút thêm " . TextFormat::GOLD . "5.000VNĐ" . TextFormat::WHITE . " vì không còn chỗ chứa trong kho đồ, số tiền còn lại đã được đưa lại vào ví.");
 						$money->addMoney($player, $amount);
 						return;
 					}
@@ -224,7 +224,7 @@ class NganHang {
 					$item = ItemFactory::get(Item::FEATHER, 0, 1);
 					$item->setCustomName("2.000VNĐ");
 					if (!$player->getInventory()->canAddItem($item)) {
-						$player->sendMessage($this->tag . "Không thể rút thêm 2.000VNĐ vì không còn chỗ chứa trong kho đồ, số tiền còn lại đã được đưa lại vào ví");
+						$player->sendMessage($this->tag . "Không thể rút thêm " . TextFormat::GOLD . "2.000VNĐ" . TextFormat::WHITE . " vì không còn chỗ chứa trong kho đồ, số tiền còn lại đã được đưa lại vào ví.");
 						$money->addMoney($player, $amount);
 						return;
 					}
@@ -235,7 +235,7 @@ class NganHang {
 					$item = ItemFactory::get(Item::PRISMARINE_CRYSTALS, 0, 1);
 					$item->setCustomName("1.000VNĐ");
 					if (!$player->getInventory()->canAddItem($item)) {
-						$player->sendMessage($this->tag . "Không thể rút thêm 1.000VNĐ vì không còn chỗ chứa trong kho đồ, số tiền còn lại đã được đưa lại vào ví");
+						$player->sendMessage($this->tag . "Không thể rút thêm " . TextFormat::GOLD . "1.000VNĐ" . TextFormat::WHITE . " vì không còn chỗ chứa trong kho đồ, số tiền còn lại đã được đưa lại vào ví.");
 						$money->addMoney($player, $amount);
 						return;
 					}
@@ -246,7 +246,7 @@ class NganHang {
 				if (strlen($data[0]) > 3) {
 					$final = substr_replace($data[0], ".", strlen($data[0])-3, 0);
 				}
-				$player->sendMessage($this->tag . "Bạn đã rút " . $final . ".000VNĐ từ trong ví");
+				$player->sendMessage($this->tag . "Bạn đã rút " . TextFormat::GOLD . $final . TextFormat::WHITE . ".000VNĐ từ trong ví.");
 			}
 		});
 		$form->setTitle("Rút tiền");
@@ -263,12 +263,12 @@ class NganHang {
 			$amount = (int)$data[0];
 
 			if ($amount === null) {
-				$player->sendMessage($this->tag . "Bạn phải nhập số tiền cần nạp!");
+				$player->sendMessage($this->tag . "Bạn phải nhập số tờ tiền cần nạp!");
 				return;
 			}
 			else {
 				if (!is_numeric($amount)) {
-					$player->sendMessage($this->tag . "Số tiền cần nạp phải là số!");
+					$player->sendMessage($this->tag . "Số tờ tiền cần nạp phải là số!");
 					return;
 				}
 			}
@@ -287,7 +287,7 @@ class NganHang {
 							$final = substr_replace($final, ".", strlen($final)-3, 0);
 						}
 						$itemCount = $hand->getCount();
-						$player->sendMessage($this->tag . "Bạn không có đủ " . $amount . " tờ trên tay! Số tiền nạp vào sẽ là: " . $final . ".000VNĐ");
+						$player->sendMessage($this->tag . "Bạn không có đủ " . TextFormat::AQUA . $amount . TextFormat::WHITE . " tờ trên tay! Số tiền nạp vào sẽ là: " . TextFormat::GOLD . $final . TextFormat::WHITE . ".000VNĐ.");
 					}
 					else {
 						$final = 500 * $amount;
@@ -302,7 +302,7 @@ class NganHang {
 							$final = substr_replace($final, ".", strlen($final)-3, 0);
 						}
 						$itemCount = $hand->getCount();
-						$player->sendMessage($this->tag . "Bạn không có đủ " . $amount . " tờ trên tay! Số tiền nạp vào sẽ là: " . $final . ".000VNĐ");
+						$player->sendMessage($this->tag . "Bạn không có đủ " . TextFormat::AQUA . $amount . TextFormat::WHITE . " tờ trên tay! Số tiền nạp vào sẽ là: " . TextFormat::GOLD . $final . TextFormat::WHITE . ".000VNĐ.");
 					}
 					else {
 						$final = 200 * $amount;
@@ -317,7 +317,7 @@ class NganHang {
 							$final = substr_replace($final, ".", strlen($final)-3, 0);
 						}
 						$itemCount = $hand->getCount();
-						$player->sendMessage($this->tag . "Bạn không có đủ " . $amount . " tờ trên tay! Số tiền nạp vào sẽ là: " . $final . ".000VNĐ");
+						$player->sendMessage($this->tag . "Bạn không có đủ " . TextFormat::AQUA . $amount . TextFormat::WHITE . " tờ trên tay! Số tiền nạp vào sẽ là: " . TextFormat::GOLD . $final . TextFormat::WHITE . ".000VNĐ.");
 					}
 					else {
 						$final = 100 * $amount;
@@ -332,7 +332,7 @@ class NganHang {
 							$final = substr_replace($final, ".", strlen($final)-3, 0);
 						}
 						$itemCount = $hand->getCount();
-						$player->sendMessage($this->tag . "Bạn không có đủ " . $amount . " tờ trên tay! Số tiền nạp vào sẽ là: " . $final . ".000VNĐ");
+						$player->sendMessage($this->tag . "Bạn không có đủ " . TextFormat::AQUA . $amount . TextFormat::WHITE . " tờ trên tay! Số tiền nạp vào sẽ là: " . TextFormat::GOLD . $final . TextFormat::WHITE . ".000VNĐ.");
 					}
 					else {
 						$final = 50 * $amount;
@@ -347,7 +347,7 @@ class NganHang {
 							$final = substr_replace($final, ".", strlen($final)-3, 0);
 						}
 						$itemCount = $hand->getCount();
-						$player->sendMessage($this->tag . "Bạn không có đủ " . $amount . " tờ trên tay! Số tiền nạp vào sẽ là: " . $final . ".000VNĐ");
+						$player->sendMessage($this->tag . "Bạn không có đủ " . TextFormat::AQUA . $amount . TextFormat::WHITE . " tờ trên tay! Số tiền nạp vào sẽ là: " . TextFormat::GOLD . $final . TextFormat::WHITE . ".000VNĐ.");
 					}
 					else {
 						$final = 20 * $amount;
@@ -362,7 +362,7 @@ class NganHang {
 							$final = substr_replace($final, ".", strlen($final)-3, 0);
 						}
 						$itemCount = $hand->getCount();
-						$player->sendMessage($this->tag . "Bạn không có đủ " . $amount . " tờ trên tay! Số tiền nạp vào sẽ là: " . $final . ".000VNĐ");
+						$player->sendMessage($this->tag . "Bạn không có đủ " . TextFormat::AQUA . $amount . TextFormat::WHITE . " tờ trên tay! Số tiền nạp vào sẽ là: " . TextFormat::GOLD . $final . TextFormat::WHITE . ".000VNĐ.");
 					}
 					else {
 						$final = 10 * $amount;
@@ -377,7 +377,7 @@ class NganHang {
 							$final = substr_replace($final, ".", strlen($final)-3, 0);
 						}
 						$itemCount = $hand->getCount();
-						$player->sendMessage($this->tag . "Bạn không có đủ " . $amount . " tờ trên tay! Số tiền nạp vào sẽ là: " . $final . ".000VNĐ");
+						$player->sendMessage($this->tag . "Bạn không có đủ " . TextFormat::AQUA . $amount . TextFormat::WHITE . " tờ trên tay! Số tiền nạp vào sẽ là: " . TextFormat::GOLD . $final . TextFormat::WHITE . ".000VNĐ.");
 					}
 					else {
 						$final = 5 * $amount;
@@ -392,7 +392,7 @@ class NganHang {
 							$final = substr_replace($final, ".", strlen($final)-3, 0);
 						}
 						$itemCount = $hand->getCount();
-						$player->sendMessage($this->tag . "Bạn không có đủ " . $amount . " tờ trên tay! Số tiền nạp vào sẽ là: " . $final . ".000VNĐ");
+						$player->sendMessage($this->tag . "Bạn không có đủ " . TextFormat::AQUA . $amount . TextFormat::WHITE . " tờ trên tay! Số tiền nạp vào sẽ là: " . TextFormat::GOLD . $final . TextFormat::WHITE . ".000VNĐ.");
 					}
 					else {
 						$final = 2 * $amount;
@@ -407,7 +407,7 @@ class NganHang {
 							$final = substr_replace($final, ".", strlen($final)-3, 0);
 						}
 						$itemCount = $hand->getCount();
-						$player->sendMessage($this->tag . "Bạn không có đủ " . $amount . " tờ trên tay! Số tiền nạp vào sẽ là: " . $final . ".000VNĐ");
+						$player->sendMessage($this->tag . "Bạn không có đủ " . TextFormat::AQUA . $amount . TextFormat::WHITE . " tờ trên tay! Số tiền nạp vào sẽ là: " . TextFormat::GOLD . $final . TextFormat::WHITE . ".000VNĐ.");
 					}
 					else {
 						$final = 1 * $amount;
@@ -418,11 +418,11 @@ class NganHang {
 			}
 
 			$money->addMoney($player, $final);
-			$player->sendMessage($this->tag . "Bạn đã nạp " . $final . ".000VNĐ");
+			$player->sendMessage($this->tag . "Bạn đã nạp " . TextFormat::GOLD . $final . TextFormat::WHITE . ".000VNĐ.");
 			
 		});
 		$form->setTitle("Nạp tiền");
-		$form->addInput("Nhập số tờ trên tay cần nạp (VD: 2 để nạp 2 tờ)");
+		$form->addInput("Nhập số tờ trên tay cần nạp (VD: 10 để nạp 10 tờ)");
 		$form->addLabel(TextFormat::RED . "LƯU Ý:" . TextFormat::WHITE . " Hãy cầm tiền trên tay trước rồi bấm nạp!");
 		$form->sendToPlayer($player);
 	}
@@ -447,11 +447,11 @@ class NganHang {
 			}
 
 			if ($data[1] === null) {
-				$player->sendMessage($this->tag . "Bạn phải nhập số tiền cần chuyển!");
+				$player->sendMessage($this->tag . "Bạn phải nhập số tiền chuyển!");
 				return;
 			}
 			if (!is_numeric($data[1])) {
-					$player->sendMessage($this->tag . "Số tiền cần chuyển phải là số!");
+					$player->sendMessage($this->tag . "Số tiền chuyển phải là số!");
 					return;
 			}
 			if ($data[1] > 500000) {
@@ -459,7 +459,7 @@ class NganHang {
 				return;
 			}
 			if ($data[1] > $money->myMoney($player)) {
-				$player->sendMessage($this->tag . "Số tiền cần chuyển lớn hơn số dư trong tài khoản!");
+				$player->sendMessage($this->tag . "Số tiền chuyển lớn hơn số dư trong tài khoản!");
 				return;
 			}
 
@@ -471,8 +471,8 @@ class NganHang {
 			}
 
 			if ($default < $money->myMoney($target) && $default2 > $money->myMoney($player)) {
-				$player->sendMessage($this->tag . "Bạn đã gửi " . $data[1] . ".000VNĐ cho " . TextFormat::RED . $target->getName());
-				$target->sendMessage($this->tag . "Bạn nhận " . $data[1] . ".000VNĐ từ " . TextFormat::RED . $player->getName());
+				$player->sendMessage($this->tag . "Bạn đã gửi " . TextFormat::GOLD . $data[1] . ".000VNĐ" . TextFormat::WHITE . " cho " . TextFormat::RED . $target->getName() . ".");
+				$target->sendMessage($this->tag . "Bạn đã nhận " . TextFormat::GOLD . $data[1] . ".000VNĐ" . TextFormat::WHITE . " từ " . TextFormat::RED . $player->getName() . ".");
 				
 				$level = $target->getLevel();
 				$task = new dropTask($this->plugin, $level, $target);
@@ -482,7 +482,7 @@ class NganHang {
 		
 		$form->setTitle("Chuyển tiền");
 		$form->addInput("Nhập tên người nhận");
-		$form->addInput("Nhập số tiền cần chuyển");
+		$form->addInput("Nhập số tiền chuyển");
 		$form->sendToPlayer($player);
 	}
 
@@ -499,15 +499,13 @@ class Main extends PluginBase implements Listener {
 			InvMenuHandler::register($this);
 		}
 		$this->getServer()->getPluginManager()->registerEvents($this, $this);
-		$this->getLogger()->info(TextFormat::GOLD . "Priting text...
-            __          __   _ _      _   
-            \ \        / /  | | |    | |  
-             \ \  /\  / /_ _| | | ___| |_ 
-              \ \/  \/ / _` | | |/ _ \ __|
-               \  /\  / (_| | | |  __/ |_ 
-                \/  \/ \__,_|_|_|\___|\__|
-                  SpermLord/DevNTNghia
-		");
+		$this->getLogger()->info(TextFormat::GOLD . "__          __   _ _      _   
+                                                     \ \        / /  | | |    | |  
+                                                      \ \  /\  / /_ _| | | ___| |_ 
+                                                       \ \/  \/ / _` | | |/ _ \ __|
+                                                        \  /\  / (_| | | |  __/ |_ 
+                                                         \/  \/ \__,_|_|_|\___|\__|
+                                                          SpermLord/DevNTNghia");
 	}
 
 	public function onCommand(CommandSender $player, Command $command, string $label, Array $args = null): bool {
@@ -523,34 +521,12 @@ class Main extends PluginBase implements Listener {
 		return true;
 	}
 
-	/*public function onTap(PlayerInteractEvent $event) {
-		$player = $event->getPlayer();
-		$itemID = $player->getInventory()->getItemInHand()->getId();
-		$itemName = $player->getInventory()->getItemInHand()->getName();
-		if ($itemID === Item::IRON_NUGGET && $itemName == "Thẻ ngân hàng") {
-			$nganhang = new NganHang($player, $this);
-			$nganhang->sendTo($player);
-		}
-	}*/
-
 	public function PickUp(InventoryPickupItemEvent $e) {
 		$itemEntity = $e->getItem();
 		$item = $itemEntity->getItem();
-		if($item->getName() === "SPERMLORD"){
+		if($item->getName() === "SpermLord"){
 			$e->setCancelled();
 			$itemEntity->kill();
-		}
-	}
-
-
-	public function onCraftEvent(CraftItemEvent $event) {
-		$player = $event->getPlayer();
-		foreach($event->getRecipe()->getResults() as $result) {
-			if($result->getId() === Item::IRON_NUGGET) {
-				$player->sendMessage(TextFormat::GOLD . "[" . TextFormat::GREEN . "Wallet" . TextFormat::GOLD . "] " . TextFormat::WHITE . "Bạn không thể chế tạo vật phẩm này!");
-				$event->setCancelled();
-				break;
-			}
 		}
 	}
 }
