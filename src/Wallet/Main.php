@@ -505,7 +505,7 @@ class Main extends PluginBase implements Listener {
                                             \ \/  \/ / _` | | |/ _ \ __|
                                              \  /\  / (_| | | |  __/ |_ 
                                               \/  \/ \__,_|_|_|\___|\__|
-                                               SpermLord/DevNTNghia");
+                                                SpermLord/DevNTNghia");
 	}
 
 	public function onCommand(CommandSender $player, Command $command, string $label, Array $args = null): bool {
