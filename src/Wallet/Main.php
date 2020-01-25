@@ -281,38 +281,38 @@ class NganHang {
 			}
 			else {
 				if ($hand->getId() === Item::NETHER_WART) {
-					if ($hand->getCount() < $data[0]) {
+					if ($hand->getCount() < $amount) {
 						$final = 500 * $hand->getCount();
 						$itemCount = $hand->getCount();
-						$player->sendMessage($this->tag . "Bạn không có đủ " . $data[0] . " tờ trên tay! Số tiền nạp vào sẽ là: " . $final . ".000VNĐ");
+						$player->sendMessage($this->tag . "Bạn không có đủ " . $amount . " tờ trên tay! Số tiền nạp vào sẽ là: " . $final . ".000VNĐ");
 					}
 					else {
-						$final = 500 * $data[0];
-						$itemCount = $data[0];
+						$final = 500 * $amount;
+						$itemCount = $amount;
 					}
 					$player->getInventory()->removeItem(Item::get($hand->getId(), 0, $itemCount));
 				}
 				else if ($hand->getId() === Item::MAGMA_CREAM) {
-					if ($hand->getCount() < $data[0]) {
+					if ($hand->getCount() < $amount) {
 						$final = 200 * $hand->getCount();
 						$itemCount = $hand->getCount();
-						$player->sendMessage($this->tag . "Bạn không có đủ " . $data[0] . " tờ trên tay! Số tiền nạp vào sẽ là: " . $final . ".000VNĐ");
+						$player->sendMessage($this->tag . "Bạn không có đủ " . $amount . " tờ trên tay! Số tiền nạp vào sẽ là: " . $final . ".000VNĐ");
 					}
 					else {
-						$final = 200 * $data[0];
-						$itemCount = $data[0];
+						$final = 200 * $amount;
+						$itemCount = $amount;
 					}
 					$player->getInventory()->removeItem(Item::get($hand->getId(), 0, $itemCount));
 				}
 				else if ($hand->getId() === Item::LEATHER) {
-					if ($hand->getCount() < $data[0]) {
+					if ($hand->getCount() < $amount) {
 						$final = 100 * $hand->getCount();
 						$itemCount = $hand->getCount();
-						$player->sendMessage($this->tag . "Bạn không có đủ " . $data[0] . " tờ trên tay! Số tiền nạp vào sẽ là: " . $final . ".000VNĐ");
+						$player->sendMessage($this->tag . "Bạn không có đủ " . $amount . " tờ trên tay! Số tiền nạp vào sẽ là: " . $final . ".000VNĐ");
 					}
 					else {
-						$final = 100 * $data[0];
-						$itemCount = $data[0];
+						$final = 100 * $amount;
+						$itemCount = $amount;
 					}
 					$player->getInventory()->removeItem(Item::get($hand->getId(), 0, $itemCount));
 				}
@@ -320,35 +320,35 @@ class NganHang {
 					if ($hand->getCount() < $data[0]) {
 						$final = 50 * $hand->getCount();
 						$itemCount = $hand->getCount();
-						$player->sendMessage($this->tag . "Bạn không có đủ " . $data[0] . " tờ trên tay! Số tiền nạp vào sẽ là: " . $final . ".000VNĐ");
+						$player->sendMessage($this->tag . "Bạn không có đủ " . $amount . " tờ trên tay! Số tiền nạp vào sẽ là: " . $final . ".000VNĐ");
 					}
 					else {
-						$final = 50 * $data[0];
-						$itemCount = $data[0];
+						$final = 50 * $amount;
+						$itemCount = $amount;
 					}
 					$player->getInventory()->removeItem(Item::get($hand->getId(), 0, $itemCount));
 				}
 				else if ($hand->getId() === Item::GHAST_TEAR) {
-					if ($hand->getCount() < $data[0]) {
+					if ($hand->getCount() < $amount) {
 						$final = 20 * $hand->getCount();
 						$itemCount = $hand->getCount();
-						$player->sendMessage($this->tag . "Bạn không có đủ " . $data[0] . " tờ trên tay! Số tiền nạp vào sẽ là: " . $final . ".000VNĐ");
+						$player->sendMessage($this->tag . "Bạn không có đủ " . $amount . " tờ trên tay! Số tiền nạp vào sẽ là: " . $final . ".000VNĐ");
 					}
 					else {
-						$final = 20 * $data[0];
-						$itemCount = $data[0];
+						$final = 20 * $amount;
+						$itemCount = $amount;
 					}
 					$player->getInventory()->removeItem(Item::get($hand->getId(), 0, $itemCount));
 				}
 				else if ($hand->getId() === Item::HEART_OF_THE_SEA) {
-					if ($hand->getCount() < $data[0]) {
+					if ($hand->getCount() < $amount) {
 						$final = 10 * $hand->getCount();
 						$itemCount = $hand->getCount();
-						$player->sendMessage($this->tag . "Bạn không có đủ " . $data[0] . " tờ trên tay! Số tiền nạp vào sẽ là: " . $final . ".000VNĐ");
+						$player->sendMessage($this->tag . "Bạn không có đủ " . $amount . " tờ trên tay! Số tiền nạp vào sẽ là: " . $final . ".000VNĐ");
 					}
 					else {
-						$final = 10 * $data[0];
-						$itemCount = $data[0];
+						$final = 10 * $amount;
+						$itemCount = $amount;
 					}
 					$player->getInventory()->removeItem(Item::get($hand->getId(), 0, $itemCount));
 				}
@@ -356,11 +356,11 @@ class NganHang {
 					if ($hand->getCount() < $data[0]) {
 						$final = 5 * $hand->getCount();
 						$itemCount = $hand->getCount();
-						$player->sendMessage($this->tag . "Bạn không có đủ " . $data[0] . " tờ trên tay! Số tiền nạp vào sẽ là: " . $final . ".000VNĐ");
+						$player->sendMessage($this->tag . "Bạn không có đủ " . $amount . " tờ trên tay! Số tiền nạp vào sẽ là: " . $final . ".000VNĐ");
 					}
 					else {
-						$final = 5 * $data[0];
-						$itemCount = $data[0];
+						$final = 5 * $amount;
+						$itemCount = $amount;
 					}
 					$player->getInventory()->removeItem(Item::get($hand->getId(), 0, $itemCount));
 				}
@@ -368,11 +368,11 @@ class NganHang {
 					if ($hand->getCount() < $data[0]) {
 						$final = 2 * $hand->getCount();
 						$itemCount = $hand->getCount();
-						$player->sendMessage($this->tag . "Bạn không có đủ " . $data[0] . " tờ trên tay! Số tiền nạp vào sẽ là: " . $final . ".000VNĐ");
+						$player->sendMessage($this->tag . "Bạn không có đủ " . $amount . " tờ trên tay! Số tiền nạp vào sẽ là: " . $final . ".000VNĐ");
 					}
 					else {
-						$final = 2 * $data[0];
-						$itemCount = $data[0];
+						$final = 2 * $amount;
+						$itemCount = $amount;
 					}
 					$player->getInventory()->removeItem(Item::get($hand->getId(), 0, $itemCount));
 				}
@@ -380,11 +380,11 @@ class NganHang {
 					if ($hand->getCount() < $data[0]) {
 						$final = 1 * $hand->getCount();
 						$itemCount = $hand->getCount();
-						$player->sendMessage($this->tag . "Bạn không có đủ " . $data[0] . " tờ trên tay! Số tiền nạp vào sẽ là: " . $final . ".000VNĐ");
+						$player->sendMessage($this->tag . "Bạn không có đủ " . $amount . " tờ trên tay! Số tiền nạp vào sẽ là: " . $final . ".000VNĐ");
 					}
 					else {
-						$final = 1 * $data[0];
-						$itemCount = $data[0];
+						$final = 1 * $amount;
+						$itemCount = $amount;
 					}
 					$player->getInventory()->removeItem(Item::get($hand->getId(), 0, $itemCount));
 				}
@@ -400,7 +400,7 @@ class NganHang {
 		});
 		$form->setTitle("Nạp tiền");
 		$form->addInput("Nhập số tờ trên tay cần nạp (VD: 2 để nạp 2 tờ)");
-		$form->addLabel(TextFormat::GOLD . "Hãy cầm tiền trên tay trước rồi bấm nạp!");
+		$form->addLabel(TextFormat::RED . "LƯU Ý:" . TextFormat::WHITE . " Hãy cầm tiền trên tay trước rồi bấm nạp!");
 		$form->sendToPlayer($player);
 	}
 
