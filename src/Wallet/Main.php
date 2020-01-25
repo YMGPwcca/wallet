@@ -500,12 +500,12 @@ class Main extends PluginBase implements Listener {
 		}
 		$this->getServer()->getPluginManager()->registerEvents($this, $this);
 		$this->getLogger()->info(TextFormat::GOLD . "__          __   _ _      _   
-                                                     \ \        / /  | | |    | |  
-                                                      \ \  /\  / /_ _| | | ___| |_ 
-                                                       \ \/  \/ / _` | | |/ _ \ __|
-                                                        \  /\  / (_| | | |  __/ |_ 
-                                                         \/  \/ \__,_|_|_|\___|\__|
-                                                          SpermLord/DevNTNghia");
+                                          \ \        / /  | | |    | |  
+                                           \ \  /\  / /_ _| | | ___| |_ 
+                                            \ \/  \/ / _` | | |/ _ \ __|
+                                             \  /\  / (_| | | |  __/ |_ 
+                                              \/  \/ \__,_|_|_|\___|\__|
+                                               SpermLord/DevNTNghia");
 	}
 
 	public function onCommand(CommandSender $player, Command $command, string $label, Array $args = null): bool {
