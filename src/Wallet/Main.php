@@ -430,7 +430,7 @@ class NganHang {
 	public function chuyentienF(Player $player) {
 		$player->removeAllWindows();
 		$formapi = Server::getInstance()->getPluginManager()->getPlugin("FormAPI");
-		$form = $formapi->createCustomForm(function (Player $player, array $data) {
+		$form = $formapi->createCustomForm(function (Player $player, Array $data = null) {
 			$money = EconomyAPI::getInstance();
 			$target = Server::getInstance()->getPlayerExact($data[0]);
 			$default = $money->myMoney($target);
